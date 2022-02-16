@@ -22,6 +22,9 @@ import Change from './Components/Change/Change';
 import Allorders from './Components/ADMINS/All-Orders/Allorders';
 import Profile from './Components/USERS/Profile/Profile';
 import Chat from './Components/USERS/Chat/Chat';
+import Service from './Components/ADMINS/Service/Service';
+import Myorders from './Components/USERS/Myorders/Myorders';
+import ViewService from './Components/USERS/ViewService/ViewService';
 
 
 function App() {
@@ -52,6 +55,7 @@ function App() {
       <Route path ='/adminhome' component={Change} />
       <Route path ='/getallusers' component={Showallusers} />
       <Route path ='/allorders' component={Allorders} />
+      <Route path='/service' component={Service}/>
 
 
 
@@ -67,6 +71,8 @@ function App() {
       <Route path='/order-success' component={Ordersuccess} />
       <Route path='/profile' component={Profile} />
       <Route path='/Chat/:id' component={Chat} />
+      <Route path='/My-orders' component={Myorders}/>
+      <Route path='/viewService' component={ViewService}/>
 
       {/* <Route path='/*' component={Cart} /> */}
 

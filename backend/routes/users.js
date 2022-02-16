@@ -1,5 +1,7 @@
 var express = require("express");
+const { Db } = require("mongodb");
 var userHelper = require("../helper/userHelper");
+var db = require("../config/connection");
 
 var router = express.Router();
 let nw ={}
@@ -276,8 +278,9 @@ router.get('/userDetails',(req,res)=>{
   })
   
 })
-router.get('/userOrderItems',(req,res)=>{
+router.get('/userOrderItems',verifySignedIn,(req,res)=>{
  const  userId =nw._id
+ console.log("ddff",userId);
   userHelper.getUserOrder(userId).then((response)=>{
     console.log("userOrder",response);
     res.json({message:response})
@@ -297,5 +300,10 @@ router.post("/search", verifySignedIn, async function (req, res) {
   // Add product
  
 });
+router.get('/viewService', function(req,res){
+  db.get().collection('service').find().toArray().then((service)=>{
+    res.json({service})
+  })
+})
 
 module.exports = router;

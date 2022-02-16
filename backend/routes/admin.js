@@ -3,6 +3,7 @@ var adminHelper = require("../helper/adminHelper");
 var fs = require("fs");
 const userHelper = require("../helper/userHelper");
 var router = express.Router();
+var db = require("../config/connection");
 
 const verifySignedIn = (req, res, next) => {
   if (req.session.signedInAdmin) {
@@ -214,6 +215,16 @@ router.post("/search", verifySignedIn, function (req, res) {
     res.render("admin/search-result", { admin: true, administator, response });
   });
 });
+router.post('/addService', function(req,res,next){
+  
+  // console.log(req.body);
+  db.get().collection('service').insertOne(req.body).then((result)=>{
+    console.log(result);
+    res.send("added successfully")
+  })
+  
+
+})
 
 
 module.exports = router;
