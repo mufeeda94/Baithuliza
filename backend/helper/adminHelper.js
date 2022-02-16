@@ -16,6 +16,15 @@ module.exports = {
       });
   },
 
+  // addService:(details)=>{
+  //   db.get()
+  //   .collection('service')
+  //   .insertOne(req.body)
+  //   .then((data)=>{
+  //     console.log(data);
+  //   })
+  // },
+
   getAllProducts: () => {
     return new Promise(async (resolve, reject) => {
       let products = await db
