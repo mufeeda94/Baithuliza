@@ -10,20 +10,20 @@ import Tabl from '../AdminTable/Table'
 import Datatable from '../AdminTable/Datatables'
 
 function AdminHome() {
-  const [items, setitems] = useState([])
-  const { Users, Cartcount, AdminTrue } = useContext(DataContext)
-  const [adminTrue, setadminTrue] = AdminTrue
-  const getAdmindetails = () => {
-    axios.get('http://localhost:8008/admin/').then((response) => {
-      console.log(response);
-      setitems(response.data.products)
-    })
-  }
-  useEffect(() => {
-    setadminTrue(true)
-    getAdmindetails()
+  // const [items, setitems] = useState([])
+  // const { Users, Cartcount, AdminTrue } = useContext(DataContext)
+  // const [adminTrue, setadminTrue] = AdminTrue
+  // const getAdmindetails = () => {
+  //   axios.get('http://localhost:8008/admin/').then((response) => {
+  //     console.log(response);
+  //     setitems(response.data.products)
+  //   })
+  // }
+  // useEffect(() => {
+  //   setadminTrue(true)
+  //   getAdmindetails()
 
-  }, [])
+  // }, [])
   return (
 
 
@@ -61,7 +61,7 @@ function AdminHome() {
         </Table> */}
 
       
-      <Datatable items={items} />
+      {/* <Datatable items={items} /> */}
     </div>
   )
 }

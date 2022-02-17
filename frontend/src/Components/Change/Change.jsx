@@ -43,7 +43,7 @@ function Change() {
             <th>Name</th>
             <th>Points</th>
             <th>Uploaded</th>
-            <th>Delte</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>

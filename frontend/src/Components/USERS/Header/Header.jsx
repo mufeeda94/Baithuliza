@@ -56,6 +56,8 @@ function Header() {
                 <>
                 <Link to='/'> <button>Home</button> </Link>
                 <Link to='/profile'> <button>Profile</button> </Link>
+                <Link to='/add-product'><button>Add Product</button></Link>
+                <Link to='/viewService'><button>Service</button></Link>
                 </>
 }
                 <div style={{ marginTop: '15px' }} className="cartIcon">
@@ -63,7 +65,7 @@ function Header() {
                 </div>
                 <DropdownButton variant='dark' id="dropdown-basic-button" title={currentUser ? currentUser : 'Login'}>
                     <Dropdown.Item  >{isLoaged ? <h5 onClick={logout}> Logout </h5> : <Link style={{ textDecoration: 'none' }} to='/About' > <h5 onClick={reload}  >Login</h5></Link>}</Dropdown.Item>
-                    <Dropdown.Item ><h5> Signup </h5></Dropdown.Item>
+                    <Dropdown.Item >{isLoaged ? null: <Link style={{ textDecoration: 'none' }} to='/Signup' > <h5 onClick={reload}  >signup</h5></Link>}</Dropdown.Item>
 
                 </DropdownButton>
                 {/* <button onClick={notify}>Logout</button> */}

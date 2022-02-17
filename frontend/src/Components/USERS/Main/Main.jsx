@@ -7,7 +7,7 @@ import Modal from '../Addproduct/Addproduct'
 import { BsBasket } from "react-icons/bs";
 import './Main.css'
 import { Card, Carousel, Dropdown, DropdownButton } from 'react-bootstrap'
-import Hero from '../../../Hero-img.jpg'
+import Cover from '../../../cover.jpg'
 import { BsCartPlus } from "react-icons/bs";
 import MidBanner from '../../../about-banner.jpg'
 import CardS from '../Card/Card'
@@ -54,7 +54,7 @@ function Main() {
             
             <div className="Hero">
                 <div className="hero-img">
-                    <img src={Hero} alt="" />
+                    <img src={Cover} alt="" />
                 </div>
                 <div className="hero-content">
                     <div className="title">

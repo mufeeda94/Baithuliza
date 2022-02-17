@@ -58,7 +58,7 @@ function CardS({i,setres}) {
         planter with a blue &amp; red ribbom and butterfly pick.
       </p>
       <p>upload :{i.CreatedBy}</p>
-      {/* <Link to={`/chat/${i.CreatedBy}`}> <button >chat</button></Link> */}
+      <Link to={`/chat/${i.CreatedBy}`}> <button className='bg-danger' >chat</button></Link>
       <button onClick={()=>addItem(i._id)} className=' bg-success' >Add to Cart</button>
       <button onClick={()=>wishList(i._id)} className=' bg-warning' >Wishlist</button>
     </div>

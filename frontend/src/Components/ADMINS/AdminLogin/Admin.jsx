@@ -29,6 +29,7 @@ function Admin() {
 
      useEffect(() => {
         localStorage.removeItem('user')
+        setadminTrue(false)
 
      }, [])
        

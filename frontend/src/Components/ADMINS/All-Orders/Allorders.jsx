@@ -20,10 +20,10 @@ function Allorders() {
             <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Points</th>
-                        <th>Uploaded</th>
-                        <th>Delte</th>
+                        <th>Date</th>
+                        <th>Mode of Payment</th>
+                        <th>Amount</th>
+                        
                     </tr>
                 </thead>
                 <tbody>

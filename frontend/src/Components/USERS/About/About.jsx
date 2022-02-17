@@ -6,6 +6,7 @@ import { DataContext } from '../../../Context/Context'
 import './About.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast,ToastContainer } from 'react-toastify'
+import farmer from '../../../farmer.jpg'
 
 function About() {
     const history = useHistory()
@@ -47,7 +48,7 @@ axios.post('http://localhost:8008/signin',input).then((response)=>{
       LoginSuccess()
       setisLoaged(true)
         history.push('/') 
-    }else alert('failed')
+    }else alert('')
              
     })
 
@@ -60,7 +61,7 @@ axios.post('http://localhost:8008/signin',input).then((response)=>{
     return (
         <div className='Login' >
           <div className="Login-img">
-            <img src="https://dashboard.researchandranking.com/user_assets/Login/img/Left-Login-banner-img.png" alt="" />
+            <img src={farmer} alt="" width={"1500"} />
           </div>
 
           <div style={{width:'50%'}} className="container">

@@ -39,7 +39,7 @@ module.exports = {
   doSignup: (adminData) => {
     return new Promise(async (resolve, reject) => {
       if (adminData.Code == "admin123") {
-        adminData.Password = await bcrypt.hash(adminData.Password, 10);
+        // adminData.Password = await bcrypt.hash(adminData.Password, 10);
         db.get()
           .collection(collections.ADMIN_COLLECTION)
           .insertOne(adminData)
@@ -60,17 +60,17 @@ module.exports = {
         .collection(collections.ADMIN_COLLECTION)
         .findOne({ Email: adminData.Email });
       if (admin) {
-        bcrypt.compare(adminData.password, admin.Password).then((status) => {
-          if (status) {
+        // bcrypt.compare(adminData.password, admin.Password).then((status) => {
+        //   if (status) {
             console.log("Login Success");
             response.admin = admin;
             response.status = true;
             resolve(response);
-          } else {
-            console.log("Login Failed");
-            resolve({ status: false });
-          }
-        });
+          // } else {
+          //   console.log("Login Failed");
+          //   resolve({ status: false });
+          // }
+        // });
       } else {
         console.log("Login Failed");
         resolve({ status: false });

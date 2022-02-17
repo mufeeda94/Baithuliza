@@ -25,6 +25,7 @@ import Chat from './Components/USERS/Chat/Chat';
 import Service from './Components/ADMINS/Service/Service';
 import Myorders from './Components/USERS/Myorders/Myorders';
 import ViewService from './Components/USERS/ViewService/ViewService';
+import WishList from './Components/USERS/Wishlist/WishList';
 
 
 function App() {
@@ -52,12 +53,11 @@ function App() {
       
       
       <Route path ='/admin' component={Admin} />
-      <Route path ='/adminhome' component={Change} />
+      <Route path ='/products' component={Change} />
       <Route path ='/getallusers' component={Showallusers} />
       <Route path ='/allorders' component={Allorders} />
       <Route path='/service' component={Service}/>
-
-
+      <Route path='/adminhome' component={AdminHome}/>
 
 
       {/* Users Section */}
@@ -73,6 +73,7 @@ function App() {
       <Route path='/Chat/:id' component={Chat} />
       <Route path='/My-orders' component={Myorders}/>
       <Route path='/viewService' component={ViewService}/>
+      <Route path='/wishlit' component= {WishList}/>
 
       {/* <Route path='/*' component={Cart} /> */}
 

@@ -129,12 +129,12 @@ router.post("/edit-product/:id", verifySignedIn, function (req, res) {
 
 router.post("/delete-product/:id",  function (req, res) {
   let productId = req.params.id;
-  console.log('proid',prodctId);
-  res.json({msg:'success'})
-  // adminHelper.deleteProduct(productId).then((response) => {
-  //   // fs.unlinkSync("./public/images/product-images/" + productId + ".png");
-  //   res.json({message:'delete success'});
-  // });
+  console.log('proid',productId);
+  
+  adminHelper.deleteProduct(productId).then((response) => {
+    // fs.unlinkSync("./public/images/product-images/" + productId + ".png");
+    res.json({message:'delete success'});
+  });
 });
 
 router.get("/delete-all-products", function (req, res) {

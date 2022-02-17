@@ -11,7 +11,7 @@ function Adminheader() {
                   <h1>Admin Page</h1>  
                 </div>
                 <div className='right' >
-                  <Link to='/adminhome' > <button  >Products</button> </Link>  
+                  <Link to='/products' > <button  >Products</button> </Link>  
                    <Link to='/getallusers' > <button>User</button></Link> 
                    <Link to='/allorders' > <button>Orders</button></Link> 
                     
