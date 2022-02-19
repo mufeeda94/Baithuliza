@@ -496,34 +496,34 @@ module.exports = {
   
   },
 
-  addToWishlist :(proId,userId)=>{
-    return new Promise(async(resolve,reject)=>{
+  // addToWishlist :(proId,userId)=>{
+  //   return new Promise(async(resolve,reject)=>{
       
-    const wishlistExist= await db.get().collection('wishlist').findOne({id:objectId(userId) })
-     const  recivedProdDetails = await db.get().collection(collections.PRODUCTS_COLLECTION).findOne({_id:objectId(proId)})
-     console.log('recivedProdDetails',recivedProdDetails);
-    let items ={
-      id:userId,
-       favs: [recivedProdDetails]
-    }
-      if(wishlistExist){
-        console.log('pId',proId);
-       console.log('w List is',wishlistExist);
-       const promatch =  wishlistExist.favs.find((i)=> i._id == proId )
-       console.log('promatch is' ,promatch);
-       if (promatch) {
-         resolve('already inthe wish list')
+  //   const wishlistExist= await db.get().collection('wishlist').findOne({id:objectId(userId) })
+  //    const  recivedProdDetails = await db.get().collection(collections.PRODUCTS_COLLECTION).findOne({_id:objectId(proId)})
+  //    console.log('recivedProdDetails',recivedProdDetails);
+  //   let items ={
+  //     id:userId,
+  //      favs: [recivedProdDetails]
+  //   }
+  //     if(wishlistExist){
+  //       console.log('pId',proId);
+  //      console.log('w List is',wishlistExist);
+  //      const promatch =  wishlistExist.favs.find((i)=> i._id == proId )
+  //      console.log('promatch is' ,promatch);
+  //      if (promatch) {
+  //        resolve('already inthe wish list')
          
-       }else{
-        db.get().collection('wishlist').updateOne(
-          {id:objectId(userId)},
-          {
-            $push:{favs:recivedProdDetails}
-          }
-          ).then((res)=>{
-            resolve('added to wishlist')
-          })
-       }
+  //      }else{
+  //       db.get().collection('wishlist').updateOne(
+  //         {id:objectId(userId)},
+  //         {
+  //           $push:{favs:recivedProdDetails}
+  //         }
+  //         ).then((res)=>{
+  //           resolve('added to wishlist')
+  //         })
+  //      }
         // promatch ? resolve('already in list') : db.get().collection('wishlist').updateOne(
         //   {id:objectId(userId)},
         //   {
@@ -535,24 +535,24 @@ module.exports = {
         
         
 
-      }else{
+      // }else{
 
-        await db.
-         get().collection('wishlist').insertOne(items).then(()=>{
-           resolve('item added to wishlist')
-         })
+      //   await db.
+  //        get().collection('wishlist').insertOne(items).then(()=>{
+  //          resolve('item added to wishlist')
+  //        })
              
-      }
-    })
-  },
-  getWishListItems :(userId)=>{
-     return new Promise(async(resolve,reject)=>{
-      const wishlist=await db.get().collection('wishlist').find({id:objectId(userId)}).toArray()
-         console.log("wish ",wishlist);
-      resolve(wishlist)
+  //     }
+  //   })
+  // },
+  // getWishListItems :(userId)=>{
+  //    return new Promise(async(resolve,reject)=>{
+  //     const wishlist=await db.get().collection('wishlist').find({id:objectId(userId)}).toArray()
+  //        console.log("wish ",wishlist);
+  //     resolve(wishlist)
       
-     })
-  },
+  //    })
+  // },
   sendChat: (user, items) => {
     return new Promise(async (resolve, reject) => {
       const data = {

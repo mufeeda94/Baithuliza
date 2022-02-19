@@ -65,12 +65,14 @@ router.get("/signin", function (req, res) {
 
 router.post("/signin", function (req, res) {
   console.log('input is',req.body);
+  
   userHelper.doSignin(req.body).then((response) => {
     if (response.status) {
       req.session.signedIn = true;
       req.session.user = response.user;
       // res.redirect("/");
       nw=req.session.user
+      console.log("session",req.session.user)
       res.json({session:req.session}).status(200)
     } else {
       req.session.signInErr = "Invalid Email/Password";
@@ -228,25 +230,25 @@ router.post('/addproduct',verifySignedIn,(req,res)=>{
   })
   
 })
-router.post('/add-to-wishlist/:id',async(req,res)=>{
-  let productId =req.params.id
-  console.log(productId);
-  let userId = nw._id
-await userHelper.addToWishlist(productId,userId).then((response)=>{
-  res.json({message:response})
-})
+// router.post('/add-to-wishlist/:id',async(req,res)=>{
+//   let productId =req.params.id
+//   console.log(productId);
+//   let userId = nw._id
+// await userHelper.addToWishlist(productId,userId).then((response)=>{
+//   res.json({message:response})
+// })
 
   
-})
+// })
 
-router.get('/wishlist',(req,res)=>{
-  userHelper.getWishListItems(nw._id).then((items)=>{
-    res.json({message:items})
-  })
+// router.get('/wishlist',(req,res)=>{
+//   userHelper.getWishListItems(nw._id).then((items)=>{
+//     res.json({message:items})
+//   })
   
-})
+// })
 
-router.get('/chat/:id',(req,res)=>{
+router.get('/chat/:id',verifySignedIn,(req,res)=>{
  const expected = req.params.id
  const user=nw
 
@@ -255,7 +257,7 @@ router.get('/chat/:id',(req,res)=>{
   })
  
 })
-router.post('/chat',async(req,res)=>{
+router.post('/chat',verifySignedIn,async(req,res)=>{
   
 const user=nw
 console.log(req.body);

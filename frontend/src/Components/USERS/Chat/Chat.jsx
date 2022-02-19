@@ -1,28 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './Chat.css'
 import {useParams} from 'react-router-dom'
 import axios from 'axios';
 function Chat() {
   const [message, setmessage] = useState([])
  const {id} = useParams()
+ const [chat,setchat]=useState([])
 
  const getAllChats =()=>{
    console.log(id);
    axios.get(`http://localhost:8008/chat/${id}`).then((response)=>{
-     console.log('response',response);
-     
+     console.log('response message',response);
+     setchat(response.data.message);
+    
 
 
    })
  }
 
  console.log('id',id);
- getAllChats()
+ 
  const sendChat=()=>{
    axios.post('http://localhost:8008/chat',{reciver:id,message:message}).then((response)=>{
 
    })
  }
+ useEffect(() => {
+  getAllChats()
+}, [])
     return (
         <div>
             ;<div id="container">
@@ -127,8 +132,13 @@ function Chat() {
         </div>
         <div className="triangle" />
         <div className="message">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor.
+          {
+ chat.map((i)=>{
+  return(
+<h5>  {i.text}</h5>
+  )
+})
+          }
         </div>
       </li>
       
