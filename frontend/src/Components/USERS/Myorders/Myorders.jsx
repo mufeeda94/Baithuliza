@@ -40,15 +40,16 @@ function Myorders() {
                             <td >{i.orderObject.date}</td>
                             <td>{i.orderObject.paymentMethod}</td>
                             <td>{i.orderObject.totalAmount}</td>
-                            {/* {
+                            <td>
+                            {
                               i.orderObject.products.map((k)=>{
                                 return(
-                                  <h1> items </h1>
+                                  <h1> {k.item}</h1>
                                 )
                               })
-                            } */}
+                            }
                             
-
+                            </td>
                             
                         </tr>
 

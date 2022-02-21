@@ -6,8 +6,9 @@ function Chat() {
   const [message, setmessage] = useState([])
  const {id} = useParams()
  const [chat,setchat]=useState([])
+ const[reply,setreply]=useState([])
 
- const getAllChats =()=>{
+ const getAllChats=()=>{
    console.log(id);
    axios.get(`http://localhost:8008/chat/${id}`).then((response)=>{
      console.log('response message',response);
@@ -17,6 +18,19 @@ function Chat() {
 
    })
  }
+ const getAllChats1 =()=>{
+  console.log(id);
+  axios.get(`http://localhost:8008/chat1/${id}`).then((response)=>{
+    console.log('reply',response);
+    setreply(response.data.message);
+    
+
+   
+
+
+  })
+}
+
 
  console.log('id',id);
  
@@ -25,8 +39,16 @@ function Chat() {
 
    })
  }
+//  const arrayc=()=>{
+// const arr=[...chat,...reply]
+// console.log("conc",arr)
+//  }
  useEffect(() => {
   getAllChats()
+  getAllChats1()
+  //  arrayc()
+
+
 }, [])
     return (
         <div>
@@ -112,18 +134,27 @@ function Chat() {
       />
     </header>
     <ul id="chat">
-      <li className="you">
-        <div className="entete">
-          <span className="status green" />
-          <h2>Vincent</h2>
-          <h3>10:12AM, Today</h3>
-        </div>
-        <div className="triangle" />
-        <div className="message">
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-          commodo ligula eget dolor.
-        </div>
-      </li>
+      {
+        reply.map((i)=>{
+          return(
+            <li className="you">
+            <div className="entete">
+              <span className="status green" />
+              <h2>Vincent</h2>
+              <h3>10:12AM, Today</h3>
+            </div>
+            <div className="triangle" />
+            <div className="message">
+          
+      {i.text}
+              
+            </div>
+            
+          </li>
+          )
+        })
+      }
+     
       <li className="me">
         <div className="entete">
           <h3>10:12AM, Today</h3>

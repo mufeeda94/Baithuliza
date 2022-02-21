@@ -65,9 +65,9 @@ function Cart() {
     }, [re])
     return (
         <div style={{width:'100%',display:'flex'}} className="main-cart">
-            <div style={{width:'50%'}} className="wishlist">
+            {/* <div style={{width:'50%'}} className="wishlist">
                <h1>Wishlist</h1>
-            </div>
+            </div> */}
             {cartItems.length !==0 ? <div style={{width:'50%'}} className='Cart'>
           {user&& <h1>My Cart</h1>}  
           <h1> <BiShoppingBag/> My Cart</h1>

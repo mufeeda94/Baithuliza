@@ -56,7 +56,7 @@ function App() {
       <Route path ='/products' component={Change} />
       <Route path ='/getallusers' component={Showallusers} />
       <Route path ='/allorders' component={Allorders} />
-      <Route path='/service' component={Service}/>
+      {/* <Route path='/service' component={Service}/> */}
       <Route path='/adminhome' component={AdminHome}/>
 
 
@@ -72,8 +72,8 @@ function App() {
       <Route path='/profile' component={Profile} />
       <Route path='/Chat/:id' component={Chat} />
       <Route path='/My-orders' component={Myorders}/>
-      <Route path='/viewService' component={ViewService}/>
-      <Route path='/wishlit' component= {WishList}/>
+      {/* <Route path='/viewService' component={ViewService}/> */}
+      {/* <Route path='/wishlit' component= {WishList}/> */}
 
       {/* <Route path='/*' component={Cart} /> */}
 

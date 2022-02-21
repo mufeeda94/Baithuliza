@@ -23,6 +23,7 @@ function Admin() {
             console.log(res);
             setadminTrue(res.data.admin)
             setmessage(res.data.message)
+            
             res.data.Signed && history.push('/adminhome')
         })
      }

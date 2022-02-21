@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {Tabs,Tab} from 'react-bootstrap'
 import Modal from '../Addproduct/Addproduct';
 import Myorders from '../Myorders/Myorders';
-import WishList from '../Wishlist/WishList';
+// import WishList from '../Wishlist/WishList';
 const Sidetab = ({nwUser}) => {
   const [key, setKey] = useState('home');
   return (
@@ -14,12 +14,12 @@ const Sidetab = ({nwUser}) => {
         
       </div>
     </Tab>
-    <Tab style={{width:'100%'}} className='bg-light' eventKey="wishlist" title="Wishlist">
+    {/* <Tab style={{width:'100%'}} className='bg-light' eventKey="wishlist" title="Wishlist">
     <div>
     <WishList/>
         
       </div>
-    </Tab>
+    </Tab> */}
     <Tab style={{width:'100%'}} className='bg-light' eventKey="order" title="My Orders" >
       <div>
       <Myorders/>

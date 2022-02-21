@@ -45,6 +45,7 @@ router.post("/signup", function (req, res) {
     if (response.status == false) {
       req.session.signUpErr = "Invalid Admin Code";
       res.redirect("/admin/signup");
+      
     } else {
       req.session.signedInAdmin = true;
       req.session.admin = response;

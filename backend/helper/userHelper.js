@@ -37,6 +37,7 @@ module.exports = {
 
   doSignup: (userData) => {
     console.log("Data is ",userData);
+  
     return new Promise(async (resolve, reject) => {
       userData.Password = await bcrypt.hash(userData.Password, 10);
       db.get()
@@ -46,6 +47,7 @@ module.exports = {
           resolve(data.ops[0]);
         });
     });
+  
   },
 
   doSignin: (userData) => {
@@ -309,7 +311,7 @@ module.exports = {
           },
         ])
         .toArray();
-      console.log(total[0].total);
+      // console.log(total[0].total);
       resolve(total[0].total);
     });
   },
@@ -359,7 +361,7 @@ module.exports = {
       let orders = await db
         .get()
         .collection(collections.ORDER_COLLECTION)
-        .find({ "orderObject.userId": objectId(userId) })
+        .find({ "orderObject.user._id": objectId(userId) })
         .toArray();
       resolve(orders);
     });
@@ -560,7 +562,7 @@ module.exports = {
         reciver: items.reciver,
         text: items.message,
         isReaded: true,
-        time: Date.now()
+        time: new Date().toISOString()
       }
       await db.get().collection('chat').insertOne(data).then((result) => {
         resolve(result)
@@ -588,6 +590,27 @@ module.exports = {
       resolve(messages)
     })
   },
+  getOne: (user, id) => {
+    console.log("reciver is ", user.Email);
+    console.log("id", id);
+    return new Promise(async (resolve, reject) => {
+      const messages= await db.get().collection('chat').find({reciver:id,sender:user.Email} ).toArray()
+      console.log("replies are",messages);
+      // const messages = await db.get().collection('chat').find().toArray();
+      // const aar = [];
+      // messages.map((i) => {
+      //   var isMe = false;
+      //   if (i.reciver == user.Email) {
+      //     isMe = true;
+      //   }
+      //   i.isMe = isMe;
+      //   // console.log("i is ",i);
+      //   aar.push(i);
+      // })
+      // resolve(aar)
+      resolve(messages)
+    })
+  }
   // userOrderItems :()=>{
   //   return new Promise((resolve,reject)=>{
   //     db.get().collection('order').find({})

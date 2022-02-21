@@ -45,12 +45,15 @@ router.get("/signup", function (req, res) {
 });
 
 router.post("/signup", function (req, res) {
+ 
+  
   userHelper.doSignup(req.body).then((response) => {
     req.session.signedIn = true;
     req.session.user = response;
    
     res.json({message:"set"}).status(200)
   });
+
 });
 
 router.get("/signin", function (req, res) {
@@ -65,6 +68,7 @@ router.get("/signin", function (req, res) {
 
 router.post("/signin", function (req, res) {
   console.log('input is',req.body);
+
   
   userHelper.doSignin(req.body).then((response) => {
     if (response.status) {
@@ -73,11 +77,13 @@ router.post("/signin", function (req, res) {
       // res.redirect("/");
       nw=req.session.user
       console.log("session",req.session.user)
+  console.log("ses",req.session);
       res.json({session:req.session}).status(200)
     } else {
       req.session.signInErr = "Invalid Email/Password";
+      
       // res.redirect("/signin");
-      res.json({message:'Invalid Email/Password'}).status(422)
+      res.json({message:'Invalid Email/Password'})
     }
   });
 });
@@ -195,6 +201,7 @@ router.get(
   async function (req, res) {
     let user = req.session.user;
     let userId = req.session.user._id;
+    console.log
     let cartCount = await userHelper.getCartCount(userId);
     let orderId = req.params.id;
     let products = await userHelper.getOrderProducts(orderId);
@@ -257,6 +264,15 @@ router.get('/chat/:id',verifySignedIn,(req,res)=>{
   })
  
 })
+router.get('/chat1/:id',verifySignedIn,(req,res)=>{
+  const expected = req.params.id
+  const user=nw
+ 
+   userHelper.getOne(user,expected).then((response)=>{
+     res.json({message:response})
+   })
+  
+ })
 router.post('/chat',verifySignedIn,async(req,res)=>{
   
 const user=nw
@@ -282,7 +298,7 @@ router.get('/userDetails',(req,res)=>{
 })
 router.get('/userOrderItems',verifySignedIn,(req,res)=>{
  const  userId =nw._id
- console.log("ddff",userId);
+ console.log("ddff",userId,nw);
   userHelper.getUserOrder(userId).then((response)=>{
     console.log("userOrder",response);
     res.json({message:response})

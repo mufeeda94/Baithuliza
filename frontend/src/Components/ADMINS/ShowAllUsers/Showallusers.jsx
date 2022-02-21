@@ -31,10 +31,10 @@ function Showallusers() {
             <table class="styled-table">
                 <thead>
                     <tr>
+                        <th>Index</th>
                         <th>Name</th>
-                        <th>Points</th>
-                        <th>Uploaded</th>
-                        <th>Delte</th>
+                        <th>Email</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import { DataContext } from '../../../Context/Context'
 import './Header.css'
 import { BsBasket, BsCart4 } from "react-icons/bs";
@@ -18,6 +18,7 @@ function Header() {
     const [refresh, setrefresh] = useState(false)
     const [currentUser, setcurrentUser] = useState()
     const notify = () => toast("successfuly Logout");
+    const history=useHistory();
 
 
     const logout = () => {
@@ -27,6 +28,7 @@ function Header() {
             if (res.data.message = 'logout success') {
                 localStorage.removeItem('user')
                 setisLoaged(false)
+                history.push('/About')
                 
             } else {
                 alert('something went wrong')
@@ -57,7 +59,7 @@ function Header() {
                 <Link to='/'> <button>Home</button> </Link>
                 <Link to='/profile'> <button>Profile</button> </Link>
                 <Link to='/add-product'><button>Add Product</button></Link>
-                <Link to='/viewService'><button>Service</button></Link>
+                
                 </>
 }
                 <div style={{ marginTop: '15px' }} className="cartIcon">

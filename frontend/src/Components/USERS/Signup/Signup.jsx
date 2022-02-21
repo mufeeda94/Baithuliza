@@ -3,9 +3,16 @@ import React from 'react'
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import './signup.css'
+import { DataContext } from '../../../Context/Context'
+import { useContext ,useEffect } from 'react'
 
 function Signup() {
     let history = useHistory()
+    const {State,AdminTrue,Users,IsLoaged}= useContext(DataContext)
+    const [adminTrue,setadminTrue]=AdminTrue
+
+
     const [error, seterror] = useState('')
     const [input, setinput] = useState({
         Name:'',
@@ -21,10 +28,16 @@ function Signup() {
             result.data.message ==='set' ?  history.push('/About') : seterror('something went wrong')
         })
     }
+    useEffect(() => {
+        setadminTrue(false)
+        // localStorage.getItem('user')
+        
+       },[])
     return (
         <div>
+            <center>
 <h1>Signup Page</h1>
-<div className="container" >
+<div className="contr" >
         <h1>  {error && 'something went wrong'}  </h1>
           
             <h1 className="h1">Register</h1>
@@ -40,6 +53,7 @@ function Signup() {
          <button onClick={handleClick}>Signup</button><br/><br/>
           <Link to='/sigin'>  <Button>Already have an account ?</Button> </Link>
         </div>
+        </center>
         </div>
     )
 }
