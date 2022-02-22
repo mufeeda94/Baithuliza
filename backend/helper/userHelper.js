@@ -77,11 +77,14 @@ module.exports = {
     });
   },
 
-  addToCart: (productId, userId) => {
-    console.log(userId);
+  addToCart: (productId, userId,Name,image) => {
+    console.log("12ab",userId,Name,image);
     let productObject = {
       item: objectId(productId),
       quantity: 1,
+      name:Name,
+      ImageUrl:image
+      
     };
     return new Promise(async (resolve, reject) => {
       let userCart = await db
@@ -92,7 +95,7 @@ module.exports = {
         let productExist = userCart.products.findIndex(
           (products) => products.item == productId
         );
-        console.log(productExist);
+        console.log("product exist",productExist);
         if (productExist != -1) {
           db.get()
             .collection(collections.CART_COLLECTION)
@@ -134,8 +137,8 @@ module.exports = {
   },
   addProduct: (product,user, callback) => {
     return new Promise((resolve,reject)=>{
-      // console.log("my",user);
-      // console.log(product);
+      console.log("my",user);
+      console.log(product);
       product.input.price = parseInt(product.input.price);
       const products={
         Name:product.input.name,

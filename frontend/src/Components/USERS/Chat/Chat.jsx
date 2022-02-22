@@ -7,6 +7,7 @@ function Chat() {
  const {id} = useParams()
  const [chat,setchat]=useState([])
  const[reply,setreply]=useState([])
+ const[ab,setab]=useState([])
 
  const getAllChats=()=>{
    console.log(id);
@@ -24,7 +25,8 @@ function Chat() {
     console.log('reply',response);
     setreply(response.data.message);
     
-
+    // setchat({...chat,reply})
+    // console.log("ab",chat)
    
 
 
@@ -39,14 +41,14 @@ function Chat() {
 
    })
  }
-//  const arrayc=()=>{
-// const arr=[...chat,...reply]
-// console.log("conc",arr)
-//  }
+
+
+ 
+ 
  useEffect(() => {
   getAllChats()
   getAllChats1()
-  //  arrayc()
+  
 
 
 }, [])

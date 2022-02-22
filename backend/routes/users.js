@@ -2,6 +2,7 @@ var express = require("express");
 const { Db } = require("mongodb");
 var userHelper = require("../helper/userHelper");
 var db = require("../config/connection");
+const objectId = require("mongodb").ObjectID;
 
 var router = express.Router();
 let nw ={}
@@ -119,7 +120,12 @@ router.get("/add-to-cart/:id",verifySignedIn, function (req, res) {
   console.log("api call");
   let productId = req.params.id;
   let userId = nw._id;
-  userHelper.addToCart(productId, userId).then(() => {
+  db.get().collection('products').findOne({_id:objectId(productId)}).then((response)=>{
+console.log("cart product",response)
+Name=response.Name;
+image=response.url;
+  })
+  userHelper.addToCart(productId, userId,Name,image).then(() => {
     res.json({ status: true });
   });
   // res.json({message:productId,user:userId})

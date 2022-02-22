@@ -30,6 +30,7 @@ function Myorders() {
                         <th>Date</th>
                         <th>Method</th>
                         <th>Price</th>
+                        <th>product</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +45,10 @@ function Myorders() {
                             {
                               i.orderObject.products.map((k)=>{
                                 return(
-                                  <h1> {k.item}</h1>
+                                  <>
+                                  <h4> {k.name}</h4>
+                                  <img style={{height:" 50px",width:"50px"}} src={k.ImageUrl}/>
+                                  </>
                                 )
                               })
                             }
