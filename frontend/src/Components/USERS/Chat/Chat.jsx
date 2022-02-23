@@ -9,9 +9,9 @@ function Chat() {
  const[reply,setreply]=useState([])
  const[ab,setab]=useState([])
 
- const getAllChats=()=>{
+ const getAllChats=async()=>{
    console.log(id);
-   axios.get(`http://localhost:8008/chat/${id}`).then((response)=>{
+    await axios.get(`http://localhost:8008/chat/${id}`).then((response)=>{
      console.log('response message',response);
      setchat(response.data.message);
     
@@ -19,18 +19,26 @@ function Chat() {
 
    })
  }
- const getAllChats1 =()=>{
+ const getAllChats1 =async()=>{
   console.log(id);
-  axios.get(`http://localhost:8008/chat1/${id}`).then((response)=>{
+   await axios.get(`http://localhost:8008/chat1/${id}`).then((response)=>{
     console.log('reply',response);
     setreply(response.data.message);
-    
-    // setchat({...chat,reply})
-    // console.log("ab",chat)
    
-
+// const arr= [...chat,...reply]
+// console.log("hai",arr)
 
   })
+}
+const msg=()=>{
+  setab(ab=>[...chat,...reply])
+  console.log("hello",ab)
+//   console.log("timr",ab.time)
+//   ab.sort((function (a, b) {
+//     return a.time.localeCompare(b.time);
+   
+// }))
+// console.log(ab)
 }
 
 
@@ -48,6 +56,7 @@ function Chat() {
  useEffect(() => {
   getAllChats()
   getAllChats1()
+  
   
 
 
@@ -135,9 +144,10 @@ function Chat() {
         alt
       />
     </header>
+    <button onClick={msg}>load</button>
     <ul id="chat">
       {
-        reply.map((i)=>{
+        ab.map((i)=>{
           return(
             <li className="you">
             <div className="entete">
@@ -157,7 +167,7 @@ function Chat() {
         })
       }
      
-      <li className="me">
+      {/* <li className="me">
         <div className="entete">
           <h3>10:12AM, Today</h3>
           <h2>Vincent</h2>
@@ -173,7 +183,7 @@ function Chat() {
 })
           }
         </div>
-      </li>
+      </li> */}
       
       
       

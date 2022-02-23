@@ -102,13 +102,13 @@ function Modal({ setOpenModal }) {
         <div className="modalBackground">
             <div className="modalContainer">
                 <div className="titleCloseBtn">
-                    <button
+                    {/* <button
                         onClick={() => {
                             setOpenModal(false);
                         }}
                     >
                         X
-                    </button>
+                    </button> */}
                 </div>
                 <div className="title">
                     <h1>ADD PRODUCTS</h1>
@@ -124,14 +124,14 @@ function Modal({ setOpenModal }) {
 
                 </div>
                 <div className="footer">
-                    <button
+                    {/* <button
                         onClick={() => {
                             setOpenModal(false);
                         }}
                         id="cancelBtn"
                     >
                         Cancel
-                    </button>
+                    </button> */}
                     <button onClick={handleAdd}>{isloading ? 'Wait....':'Add'} </button>
                 </div>
             </div>

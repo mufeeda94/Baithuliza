@@ -26,6 +26,7 @@ import Service from './Components/ADMINS/Service/Service';
 import Myorders from './Components/USERS/Myorders/Myorders';
 import ViewService from './Components/USERS/ViewService/ViewService';
 import WishList from './Components/USERS/Wishlist/WishList';
+import Category from './Components/USERS/Category/Category';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
     })
     
   }, [])
+  const name="fruits"
    return (
     <div className="App">
       <BrowserRouter>
@@ -73,7 +75,7 @@ function App() {
       <Route path='/Chat/:id' component={Chat} />
       <Route path='/My-orders' component={Myorders}/>
       {/* <Route path='/viewService' component={ViewService}/> */}
-      {/* <Route path='/wishlit' component= {WishList}/> */}
+      <Route path='/category/:name' component= {Category}/>
 
       {/* <Route path='/*' component={Cart} /> */}
 

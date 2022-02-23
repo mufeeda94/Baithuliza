@@ -565,7 +565,7 @@ module.exports = {
         reciver: items.reciver,
         text: items.message,
         isReaded: true,
-        time: new Date().toISOString()
+        time: Date.now()
       }
       await db.get().collection('chat').insertOne(data).then((result) => {
         resolve(result)

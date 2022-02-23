@@ -25,6 +25,7 @@ function About() {
       Password: '',
     }
   )
+  const [message,setmessage]=useState()
   const formdata = new FormData()
 
    const handleChane =(e)=>{
@@ -37,9 +38,13 @@ function About() {
   
 
 axios.post('http://localhost:8008/signin',input).then((response)=>{
-      console.log('resq',response.data.session.user.Name);
+      // console.log('resq',response.data.session.user.Name);
 
+    
       setuser(response.data.session.user)
+      setmessage(response.data.message)
+      
+    
       localStorage.setItem('user', response.data.session.user.Name);
       setreload(true)
       setreload(false)
@@ -48,7 +53,7 @@ axios.post('http://localhost:8008/signin',input).then((response)=>{
       LoginSuccess()
       setisLoaged(true)
         history.push('/') 
-    }else alert('')
+    }else alert('failed')
              
     })
 

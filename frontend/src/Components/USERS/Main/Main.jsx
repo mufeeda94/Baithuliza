@@ -17,6 +17,7 @@ import CardS from '../Card/Card'
 function Main() {
     const history = useHistory()
     
+    
     const { State, AdminTrue, Users, Cartcount } = useContext(DataContext)
     // const [state,setstate]=State
     const [adminTrue, setadminTrue] = AdminTrue
@@ -84,6 +85,12 @@ function Main() {
                 <div style={{textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center'}} className="hr">
                 <h1 className="menuTitle">Latest Products</h1>
                 <hr width='15%' />
+                {/* <ul>
+                    <li><Link to={`/category/${"fruits"}`}>Fruits</Link></li>
+                    <li><Link>Vegetables</Link></li>
+                    <li><Link>Cereals</Link></li>
+                    
+                </ul> */}
                 </div>
 
                 <div className="map-items">
