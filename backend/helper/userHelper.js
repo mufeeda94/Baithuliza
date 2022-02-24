@@ -347,18 +347,25 @@ module.exports = {
         status: status,
         date: new Date().toISOString(),
       };
-      db.get()
+     await db.get()
         .collection(collections.ORDER_COLLECTION)
         .insertOne({ orderObject })
         .then((response) => {
-          db.get()
-            .collection(collections.CART_COLLECTION)
-            .removeOne({ user: objectId(userId) });
-          resolve(response.ops[0]._id);
+      
+          
+            console.log("ordering",response.ops[0])
+          resolve(response.ops[0]);
         });
     });
   },
-
+delet:(userId)=>{
+  return new Promise(async (resolve, reject) => {
+ await db.get()
+  .collection(collections.CART_COLLECTION)
+  .deleteOne({ user: objectId(userId) })
+  .then((result)=>{console.log("deleted")})
+  })
+},
   getUserOrder: (userId) => {
     return new Promise(async (resolve, reject) => {
       let orders = await db

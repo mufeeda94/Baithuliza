@@ -153,6 +153,7 @@ router.get("/place-order", verifySignedIn, async (req, res) => {
   res.json({ admin: false, user, cartCount, total }).status(422);
 });
 
+
 router.post("/place-order", async (req, res) => {
   
   let user = nw;
@@ -165,13 +166,21 @@ router.post("/place-order", async (req, res) => {
     .then((orderId) => {
       if (req.body.meth === "COD") {
         res.json({ codSuccess: true });
+        // res.json(orderId)
       } else {
         res.json({message:'waiting'})
       }
     });
   
 });
-
+router.post("/delete",verifySignedIn,function(req,res,next){
+  let userId=nw._id;
+  userHelper.delet(userId).then((result)=>{
+    res.json({message:"deleted"})
+  })
+  
+  
+})
 router.post("/verify-payment", async (req, res) => {
   console.log(req.body);
   userHelper

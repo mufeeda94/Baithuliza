@@ -82,6 +82,32 @@ function Header() {
                     draggable
                     pauseOnHover
                 />
+                {/* <div>
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Products</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="body">
+                    <input type="text" onChange={handleChange} name='name' placeholder='Product name' /><br/>
+                    <input type="text" onChange={handleChange} name='category' placeholder='Product Category' /><br/>
+                    <input type="text" onChange={handleChange} name='price' placeholder='Product Price' /><br/>
+
+                    <input type="text"  onChange={handleChange} name='description' placeholder='Product Description' /><br/>
+                    <input accept="image/png" onChange={(e) => setimage(e.target.files[0])} type="file" />
+
+
+                </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button  onClick={handleAdd}>{isloading ? 'Wait....':'Add'} 
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div> */}
             </div>
         </div>
     )

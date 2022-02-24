@@ -15,14 +15,14 @@ function CardS({i,setres}) {
 
     }
 
-    const wishList =(itm)=>{
+    // const wishList =(itm)=>{
         
-        axios.post(`http://localhost:8008/add-to-wishlist/${itm}`).then((response)=>{
-            console.log(response);
-           response&& toast(response.data.message)
+    //     axios.post(`http://localhost:8008/add-to-wishlist/${itm}`).then((response)=>{
+    //         console.log(response);
+    //        response&& toast(response.data.message)
             
-        })
-    }
+    //     })
+    // }
     const sendChat =(id)=>{
       console.log(id);
       // axios.get(`http://localhost:8008/chat${id}`)
@@ -60,7 +60,7 @@ function CardS({i,setres}) {
       <p>upload :{i.CreatedBy}</p>
       <Link to={`/chat/${i.CreatedBy}`}> <button className='bg-danger' >chat</button></Link>
       <button onClick={()=>addItem(i._id)} className=' bg-success' >Add to Cart</button>
-      <button onClick={()=>wishList(i._id)} className=' bg-warning' >Wishlist</button>
+      {/* <button onClick={()=>wishList(i._id)} className=' bg-warning' >Wishlist</button> */}
     </div>
   </div>
         

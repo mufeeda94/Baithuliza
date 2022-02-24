@@ -6,7 +6,7 @@ import { DataContext } from '../../../Context/Context'
 import Modal from '../Addproduct/Addproduct'
 import { BsBasket } from "react-icons/bs";
 import './Main.css'
-import { Card, Carousel, Dropdown, DropdownButton } from 'react-bootstrap'
+import { Button, Card, Carousel, Dropdown, DropdownButton } from 'react-bootstrap'
 import Cover from '../../../cover.jpg'
 import { BsCartPlus } from "react-icons/bs";
 import MidBanner from '../../../about-banner.jpg'
@@ -27,6 +27,8 @@ function Main() {
     const [cUser, setcUser] = useState('')
     const [cartCount, setcartCount] = Cartcount
     const [res, setres] = useState(false)
+    const [allitem,setallitem]=useState([])
+    
 
 
     const getcurrentUser = () => {
@@ -40,8 +42,19 @@ function Main() {
             console.log(response.data);
             setcartCount(response.data.cartCount);
             setstate(response.data.products)
+            setallitem(response.data.products)
+            
         })
+           
+
     }
+    const fruits=()=>{
+        const res=state.filter((i)=>{
+            return(i.Category==='fruits')
+        })
+        setallitem(res)
+    }
+    // setallitem(state)
     
     useEffect(() => {
         setadminTrue(false)
@@ -84,6 +97,10 @@ function Main() {
 
                 <div style={{textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center'}} className="hr">
                 <h1 className="menuTitle">Latest Products</h1>
+                <Button onClick={fruits}>FR</Button>
+                <Button>VG</Button>
+                <Button>CL</Button>
+
                 <hr width='15%' />
                 {/* <ul>
                     <li><Link to={`/category/${"fruits"}`}>Fruits</Link></li>
@@ -95,7 +112,7 @@ function Main() {
 
                 <div className="map-items">
                     {
-                        state.map((i) => {
+                        allitem.map((i) => {
                             return (
 
                        

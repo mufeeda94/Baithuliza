@@ -27,6 +27,7 @@ import Myorders from './Components/USERS/Myorders/Myorders';
 import ViewService from './Components/USERS/ViewService/ViewService';
 import WishList from './Components/USERS/Wishlist/WishList';
 import Category from './Components/USERS/Category/Category';
+import Add from './Components/USERS/Addproduct/Add';
 
 
 function App() {
@@ -69,7 +70,7 @@ function App() {
       <Route path='/Signup' component={Signup} />
       <Route path='/Cart' component={Cart} />
       <Route path='/place-order' component={Placeorder} />
-      <Route path='/add-product' component={Modal} />
+      <Route path='/add-product' component={Add} />
       <Route path='/order-success' component={Ordersuccess} />
       <Route path='/profile' component={Profile} />
       <Route path='/Chat/:id' component={Chat} />

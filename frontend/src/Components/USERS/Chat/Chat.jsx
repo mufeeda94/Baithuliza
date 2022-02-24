@@ -8,6 +8,7 @@ function Chat() {
  const [chat,setchat]=useState([])
  const[reply,setreply]=useState([])
  const[ab,setab]=useState([])
+ const [re,setre]=useState([])
 
  const getAllChats=async()=>{
    console.log(id);
@@ -30,17 +31,30 @@ function Chat() {
 
   })
 }
-const msg=()=>{
-  setab(ab=>[...chat,...reply])
-  console.log("hello",ab)
+const msg=async()=>{
+   await setab(ab=>[...chat,...reply])
+  console.log("hello");
+ 
 //   console.log("timr",ab.time)
-//   ab.sort((function (a, b) {
+//  const result= ab.sort((function (a, b) {
 //     return a.time.localeCompare(b.time);
    
 // }))
-// console.log(ab)
-}
+// const result=await ab.sort((function (a, b) {
+//   return(a.time-b.time);
+ 
+// }))
 
+console.log("jjj",result)
+setre(result)
+// 
+}
+console.log(ab)
+const result= ab.sort((function (a, b) {
+  return(a.time-b.time);
+ 
+}))
+console.log("hai",result)
 
  console.log('id',id);
  
@@ -56,6 +70,7 @@ const msg=()=>{
  useEffect(() => {
   getAllChats()
   getAllChats1()
+  msg()
   
   
 

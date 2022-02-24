@@ -12,8 +12,12 @@ import StripeCheckout from 'react-stripe-checkout';
 
 
 function Placeorder() {
+  const {  Cartcount } = useContext(DataContext)
+  console.log("aaaa",Cartcount)
+  const [cartCount, setcartCount] = Cartcount
   const navigate =useHistory()
     const [data, setdata] = useState()
+    const[val,setval]=useState()
     const {AdminTrue} = useContext(DataContext)
     const [adminTrue,setadminTrue]=AdminTrue
     const [input, setinput] = useState({
@@ -29,12 +33,25 @@ function Placeorder() {
             setdata(response.data)
         })
        }
-    const placeOrders =(meth)=>{
+    const placeOrders =async(meth)=>{
         axios.post('http://localhost:8008/place-order',{meth,order:input}).then((response)=>{
             console.log(response);
-            response.data.codSuccess && navigate.push('/order-success')
+            setval(response.data.codSuccess)
+            
+        })
+        
+      
+        
+       }
+       const delet=()=>{
+        
+         val&& axios.post('http://localhost:8008/delete').then((result)=>{
+          console.log("deleted",result.data.message)
+          navigate.push('/order-success')
+
         })
        }
+
        const handleChange =(e)=>{
           setinput({...input,[e.target.name]:e.target.value})
        }
@@ -84,6 +101,7 @@ function Placeorder() {
         </form>
         <div style={{display:'flex',alignItems:'baseline', justifyContent:'space-evenly'}} className="checkout-btns">
         <button className='btn btn-success' style={{height:'35px' }}  onClick={()=>placeOrders('COD')} >Cash On Delivery</button>
+        <button className='btn btn-success' style={{height:'35px' }}  onClick={delet} >Order</button>
         {/* <Stripe data={data} /> */}
         </div>
         <div className="cards">
