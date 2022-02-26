@@ -46,14 +46,17 @@ router.get("/signup", function (req, res) {
 });
 
 router.post("/signup", function (req, res) {
- 
-  
+ if(!req.body.Name||!req.body.Email||!req.body.Password){
+   res.json({message:"fields require"});
+ }
+  else{
   userHelper.doSignup(req.body).then((response) => {
     req.session.signedIn = true;
     req.session.user = response;
    
     res.json({message:"set"}).status(200)
   });
+}
 
 });
 
@@ -176,7 +179,9 @@ router.post("/place-order", async (req, res) => {
 router.post("/delete",verifySignedIn,function(req,res,next){
   let userId=nw._id;
   userHelper.delet(userId).then((result)=>{
-    res.json({message:"deleted"})
+    
+    console.log(result);
+    res.json(result)
   })
   
   

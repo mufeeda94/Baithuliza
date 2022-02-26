@@ -363,7 +363,9 @@ delet:(userId)=>{
  await db.get()
   .collection(collections.CART_COLLECTION)
   .deleteOne({ user: objectId(userId) })
-  .then((result)=>{console.log("deleted")})
+  .then((result)=>{console.log("deleted")
+  resolve({message:"deleted"})
+})
   })
 },
   getUserOrder: (userId) => {

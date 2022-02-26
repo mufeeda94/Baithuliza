@@ -50,27 +50,35 @@ function Add() {
 
   return (
     <div>
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Products</Modal.Title>
+        <Modal show={show} onHide={handleClose} >
+        <Modal.Header closeButton style={{backgroundColor:"blue"}}>
+          <Modal.Title >Add Products</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div className="body">
-                    <input type="text" onChange={handleChange} name='name' placeholder='Product name' /><br/>
-                    <input type="text" onChange={handleChange} name='category' placeholder='Product Category' /><br/>
-                    <input type="text" onChange={handleChange} name='price' placeholder='Product Price' /><br/>
+                    <div><input type="text" onChange={handleChange} name='name' placeholder='Product name' /></div><br/>
+                  
+                  <div>  <select onChange={handleChange} name="category" title="category">
+                  <option value="">...</option>                
+            <option value="fruits">Fruit</option>
+            <option value="vegetables">Vegetable</option>
+            <option value="cereals">Cereal</option>
+          </select></div>
+          <br/>
+                    <div><input type="text" onChange={handleChange} name='price' placeholder='Product Price' /></div>
+                    <br/>
 
-                    <input type="text"  onChange={handleChange} name='description' placeholder='Product Description' />
-                    <input accept="image/png" onChange={(e) => setimage(e.target.files[0])} type="file" />
+                   <div> <input type="text"  onChange={handleChange} name='description' placeholder='Product Description' /></div><br/>
+                   <div> <input accept="image/png" onChange={(e) => setimage(e.target.files[0])} type="file" /></div>
 
 
                 </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
-          <Button  onClick={handleAdd}>{isloading ? 'Wait....':'Add'} 
+          <Button  onClick={handleAdd}>{isloading ? 'confirm':'Add'} 
           </Button>
         </Modal.Footer>
       </Modal>

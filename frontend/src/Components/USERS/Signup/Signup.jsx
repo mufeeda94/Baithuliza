@@ -25,7 +25,7 @@ function Signup() {
     const handleClick =()=>{
         axios.post('http://localhost:8008/signup',input).then((result)=>{
             console.log(result);
-            result.data.message ==='set' ?  history.push('/About') : seterror('something went wrong')
+            result.data.message ==='set' ?  history.push('/About') : seterror('all fields require')
         })
     }
     useEffect(() => {
@@ -38,7 +38,7 @@ function Signup() {
             <center>
 <h1>Signup Page</h1>
 <div className="contr" >
-        <h1>  {error && 'something went wrong'}  </h1>
+        <h1>  {error && 'all fields require'}  </h1>
           
             <h1 className="h1">Register</h1>
             {/* {error ? <h2 style={{color:'red'}}>{error}</h2> : "" } */}

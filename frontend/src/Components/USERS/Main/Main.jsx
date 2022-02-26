@@ -6,7 +6,7 @@ import { DataContext } from '../../../Context/Context'
 import Modal from '../Addproduct/Addproduct'
 import { BsBasket } from "react-icons/bs";
 import './Main.css'
-import { Button, Card, Carousel, Dropdown, DropdownButton } from 'react-bootstrap'
+import { Button, Card, Carousel, Dropdown, DropdownButton ,Nav,Navbar,Container} from 'react-bootstrap'
 import Cover from '../../../cover.jpg'
 import { BsCartPlus } from "react-icons/bs";
 import MidBanner from '../../../about-banner.jpg'
@@ -55,6 +55,18 @@ function Main() {
         setallitem(res)
     }
     // setallitem(state)
+    const vegetables=()=>{
+        const res=state.filter((i)=>{
+            return(i.Category==='vegetables')
+        })
+        setallitem(res)
+    }
+    const cereals=()=>{
+        const res=state.filter((i)=>{
+            return(i.Category==='cereals')
+        })
+        setallitem(res)
+    }
     
     useEffect(() => {
         setadminTrue(false)
@@ -94,20 +106,20 @@ function Main() {
 
 
                 </div>
+                <>
+  
+  <Button variant="secondary" onClick={fruits}>Fruits</Button>{' '}
+  <Button variant="secondary" onClick={vegetables}>Vegetables</Button>{' '}
+  <Button variant="secondary" onClick={cereals}>Cereals</Button>{' '}
+  
+</>
 
                 <div style={{textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center'}} className="hr">
                 <h1 className="menuTitle">Latest Products</h1>
-                <Button onClick={fruits}>FR</Button>
-                <Button>VG</Button>
-                <Button>CL</Button>
+               
 
                 <hr width='15%' />
-                {/* <ul>
-                    <li><Link to={`/category/${"fruits"}`}>Fruits</Link></li>
-                    <li><Link>Vegetables</Link></li>
-                    <li><Link>Cereals</Link></li>
-                    
-                </ul> */}
+                
                 </div>
 
                 <div className="map-items">
@@ -131,7 +143,7 @@ function Main() {
 
             <div className="mid">
                 <div className="mid-content">
-                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id commodi maiores repellat .</h1>
+                    <h1>One stop for buying fruits,vegetables,cereals</h1>
                 </div>
                 <div className="mid-hero">
                 <Carousel>

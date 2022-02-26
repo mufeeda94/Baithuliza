@@ -37,6 +37,7 @@ function Placeorder() {
         axios.post('http://localhost:8008/place-order',{meth,order:input}).then((response)=>{
             console.log(response);
             setval(response.data.codSuccess)
+            alert("you can click the order button now")
             
         })
         
@@ -46,7 +47,7 @@ function Placeorder() {
        const delet=()=>{
         
          val&& axios.post('http://localhost:8008/delete').then((result)=>{
-          console.log("deleted",result.data.message)
+          console.log("deleted",result.data)
           navigate.push('/order-success')
 
         })
@@ -100,11 +101,11 @@ function Placeorder() {
           
         </form>
         <div style={{display:'flex',alignItems:'baseline', justifyContent:'space-evenly'}} className="checkout-btns">
-        <button className='btn btn-success' style={{height:'35px' }}  onClick={()=>placeOrders('COD')} >Cash On Delivery</button>
-        <button className='btn btn-success' style={{height:'35px' }}  onClick={delet} >Order</button>
+        <button className='btn btn-success' style={{height:'35px' }}  onClick={()=>placeOrders('COD')} >Cash On Delivery</button><br/>
+        <button className='btn btn-primary' style={{height:'35px' }}  onClick={delet} >Confirm Order</button>
         {/* <Stripe data={data} /> */}
         </div>
-        <div className="cards">
+        {/* <div className="cards">
           <h1><FaCcVisa/></h1>
           <h1><FaCcStripe/></h1>
           <h1><FaCcMastercard/></h1>
@@ -112,7 +113,7 @@ function Placeorder() {
           <h1><FaCcPaypal/></h1>
           
           
-      </div>
+      </div> */}
       </div>
     </div>
       

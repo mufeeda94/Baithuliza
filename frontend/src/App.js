@@ -47,7 +47,7 @@ function App() {
     })
     
   }, [])
-  const name="fruits"
+  
    return (
     <div className="App">
       <BrowserRouter>

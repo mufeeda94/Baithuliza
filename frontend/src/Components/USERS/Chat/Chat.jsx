@@ -33,7 +33,7 @@ function Chat() {
 }
 const msg=async()=>{
    await setab(ab=>[...chat,...reply])
-  console.log("hello");
+  
  
 //   console.log("timr",ab.time)
 //  const result= ab.sort((function (a, b) {
@@ -60,7 +60,7 @@ console.log("hai",result)
  
  const sendChat=()=>{
    axios.post('http://localhost:8008/chat',{reciver:id,message:message}).then((response)=>{
-
+alert("sent message")
    })
  }
 
@@ -163,6 +163,7 @@ console.log("hai",result)
     <ul id="chat">
       {
         ab.map((i)=>{
+          if(i.sender==id){
           return(
             <li className="you">
             <div className="entete">
@@ -179,26 +180,27 @@ console.log("hai",result)
             
           </li>
           )
+          }
+          else{
+            return(
+
+              <li className="me">
+              <div className="entete">
+                <h3>10:12AM, Today</h3>
+                <h2>Vincent</h2>
+                <span className="status blue" />
+              </div>
+              <div className="triangle" />
+              <div className="message">
+                {
+      i.text}
+              </div>
+            </li> 
+            )
+          }
         })
       }
      
-      {/* <li className="me">
-        <div className="entete">
-          <h3>10:12AM, Today</h3>
-          <h2>Vincent</h2>
-          <span className="status blue" />
-        </div>
-        <div className="triangle" />
-        <div className="message">
-          {
- chat.map((i)=>{
-  return(
-<h5>  {i.text}</h5>
-  )
-})
-          }
-        </div>
-      </li> */}
       
       
       
