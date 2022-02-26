@@ -343,5 +343,13 @@ router.get('/viewService', function(req,res){
     res.json({service})
   })
 })
+router.get('/messages',verifySignedIn,function(req,res,next){
+  let user=nw;
+  console.log("new",nw)
+  userHelper.getmessages(user).then((msg)=>{
+    console.log("imad",msg)
+    res.json(msg)
+  })
+})
 
 module.exports = router;

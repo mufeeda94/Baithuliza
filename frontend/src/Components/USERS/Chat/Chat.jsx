@@ -1,8 +1,11 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import './Chat.css'
 import {useParams} from 'react-router-dom'
 import axios from 'axios';
+import { DataContext } from '../../../Context/Context'
 function Chat() {
+  const {AdminTrue} = useContext(DataContext)
+  const [adminTrue,setadminTrue]=AdminTrue
   const [message, setmessage] = useState([])
  const {id} = useParams()
  const [chat,setchat]=useState([])
@@ -68,9 +71,11 @@ alert("sent message")
  
  
  useEffect(() => {
+  setadminTrue(false)
   getAllChats()
   getAllChats1()
   msg()
+
   
   
 

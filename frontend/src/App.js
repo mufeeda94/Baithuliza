@@ -28,6 +28,7 @@ import ViewService from './Components/USERS/ViewService/ViewService';
 import WishList from './Components/USERS/Wishlist/WishList';
 import Category from './Components/USERS/Category/Category';
 import Add from './Components/USERS/Addproduct/Add';
+import ChatTable from './Components/USERS/Chattable/ChatTable';
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
       <Route path='/order-success' component={Ordersuccess} />
       <Route path='/profile' component={Profile} />
       <Route path='/Chat/:id' component={Chat} />
+      <Route path='/messages' component={ChatTable}/>
       <Route path='/My-orders' component={Myorders}/>
       {/* <Route path='/viewService' component={ViewService}/> */}
       <Route path='/category/:name' component= {Category}/>

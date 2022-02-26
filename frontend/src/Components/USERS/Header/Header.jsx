@@ -7,6 +7,7 @@ import { BsBasket, BsCart4 } from "react-icons/bs";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Badge, Dropdown, DropdownButton } from 'react-bootstrap'
+import Button from '@restart/ui/esm/Button'
 
 function Header() {
 
@@ -59,6 +60,7 @@ function Header() {
                 <Link to='/'> <button>Home</button> </Link>
                 <Link to='/profile'> <button>Profile</button> </Link>
                 <Link to='/add-product'><button>Add Product</button></Link>
+                <Link to='/messages'><Button>Chats</Button></Link>
                 
                 </>
 }

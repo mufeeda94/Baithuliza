@@ -622,7 +622,15 @@ delet:(userId)=>{
       // resolve(aar)
       resolve(messages)
     })
-  }
+  },
+  getmessages:(user)=>{
+    return new Promise(async (resolve, reject) => {
+      const msg= await db.get().collection('chat').find({reciver:user.Email} ).toArray()
+      console.log("sent are",msg);
+      resolve(msg)
+
+  })
+}
   // userOrderItems :()=>{
   //   return new Promise((resolve,reject)=>{
   //     db.get().collection('order').find({})
